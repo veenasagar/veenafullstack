@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smitha C, Assistant Professor</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js"></script>
+</head>
+<body>
+
+<div class="container">
+   
+    <div class="sidebar">
+    <nav>
+        <ul>
+            <li><a href="\home.html">Home</a></li>
+            <li><a href="\intro.html"></a>My Intro</a></li>
+            <li><a href="\services.html"></a>Services</a></li>
+            <li><a href="\cv.html"></a>CV</a></li>
+            <li><a href="\contact.html"></a>Contact</a></li>
+            <li><a href="\blog.html"></a>Blog</a></li>
+        </ul>
+    </nav>
+    </div>
+
+    <div class="main"> 
+        <div class="contact-heading">
+            <h1 class="my-heading text-center">Contact Me</h1>
+        </div>
+        <div class="contact-content">
+            <div class="contact-form-container">
+                <h1 class="greet-heading">Get In Touch</h1>
+                <form id="contactForm">
+  <input type="text" id="name" placeholder="Name" required />
+  <input type="email" id="email" placeholder="Email" required />
+  <textarea id="message" placeholder="Message" required></textarea>
+  <button type="submit">Send</button>
+</form>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+
+    fetch('http://localhost:3000/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, message })
+    })
+    .then(res => res.json())
+    .then(data => {
+      alert(data.message || 'Thank you!');
+      document.getElementById('contactForm').reset();
+    })
+    .catch(err => {
+      console.error('Error:', err);
+      alert('Something went wrong.');
+    });
+  });
+</script>
+
+               </div>   
+            <div class="contact-details">
+                <h1 class="greet-heading">My Contact Details</h1>
+                <div class="details">
+                    <h5 class="contact-heading">EMAIL</h5>
+                    <p class="contact-text">example@gmail.com</p>
+                </div>
+                <div class="details">
+                    <h5 class="contact-heading">PHONE</h5>
+                    <p class="contact-text">+91 0123456789</p>
+                </div>
+                
+                <div class="details">
+                    <h5 class="contact-heading">ADDRESS</h5>
+                    <p class="contact-text">Urambath House</p>
+                    <p>Killimangalam p o</p>
+                    <p>Thrissur6</p>
+                    <p>680591</p>
+                    <p>Kerala</p>
+                </div>
+            </div>
+        
+    </div>
+</div>
+<script src="contact-validation.js"></script>
+</body>
+</html>
