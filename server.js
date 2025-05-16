@@ -1,11 +1,11 @@
-const mongoose = require("mongoose");
-const express = require("express");
-const AddProject = require("./server/models/project.js");
-const cors = require("cors");
-const path = require("path");
-const { fileURLToPath } = require("url");
+import mongoose from "mongoose";
+import express from "express";
+import AddProject from "./server/models/project.js";
+import cors from "cors";
+import path from "path";
+import { fileURLToPath } from "url";
 
-const __filename = fileURLToPath(__filename);
+const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
